@@ -1,4 +1,4 @@
-package pc.modelling
+package scala.u06.modelling
 
 // Basical analysis helpers
 object SystemAnalysis:

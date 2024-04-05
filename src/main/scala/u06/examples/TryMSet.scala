@@ -1,6 +1,6 @@
-package pc.examples
+package scala.u06.examples
 
-import pc.utils.MSet
+import scala.u06.utils.MSet
 
 // Some simple client code.. also check MSetSpec and MSetCheck
 object TryMSet extends App:

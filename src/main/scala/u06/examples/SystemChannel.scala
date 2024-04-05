@@ -1,6 +1,6 @@
-package pc.examples
+package scala.u06.examples
 
-import pc.modelling.System
+import scala.u06.modelling.System
 
 object SystemChannel:
 
@@ -9,7 +9,7 @@ object SystemChannel:
     case IDLE, SEND, DONE, FAIL
 
   // enabling analysis through this object
-  export pc.modelling.SystemAnalysis.*
+  export scala.u06.modelling.SystemAnalysis.*
   export State.*
 
   // System specification

@@ -1,6 +1,6 @@
-package pc.examples
+package scala.u06.examples
 
-import pc.modelling.System
+import scala.u06.modelling.System
 
 object SystemMutualExclusion:
 
@@ -8,7 +8,7 @@ object SystemMutualExclusion:
     case N, T, C
 
   export State.*
-  export pc.modelling.SystemAnalysis.*
+  export scala.u06.modelling.SystemAnalysis.*
 
   type States = List[State]
 
