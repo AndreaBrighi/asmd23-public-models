@@ -1,10 +1,13 @@
-package u06.modelling
+package scala.u06.modelling
 
-import u06.utils.MSet
+import scala.u06.utils.MSet
+
+import scala.annotation.targetName
 
 object PetriNet:
   // pre-conditions, effects, inhibition
   case class Trn[P](cond: MSet[P], eff: MSet[P], inh: MSet[P])
+
   type PetriNet[P] = Set[Trn[P]]
   type Marking[P] = MSet[P]
 
@@ -15,13 +18,15 @@ object PetriNet:
   extension [P](pn: PetriNet[P])
     def toSystem: System[Marking[P]] = m =>
       for
-        Trn(cond, eff, inh) <- pn   // get any transition
-        if m disjoined inh          // check inhibition
-        out <- m extract cond       // remove precondition
-      yield out union eff           // add effect
+        Trn(cond, eff, inh) <- pn // get any transition
+        if m disjoined inh // check inhibition
+        out <- m extract cond // remove precondition
+      yield out union eff // add effect
 
   // fancy syntax to create transition rules
   extension [P](self: Marking[P])
-    def ~~> (y: Marking[P]) = Trn(self, y, MSet())
+    @targetName("transition")
+    def ~~>(y: Marking[P]): Trn[P] = Trn(self, y, MSet())
   extension [P](self: Trn[P])
-    def ^^^ (z: Marking[P]) = self.copy(inh = z)
+    @targetName("inhibitedBy")
+    def ^^^(z: Marking[P]): Trn[P] = self.copy(inh = z)
